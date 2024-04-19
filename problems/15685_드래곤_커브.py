@@ -23,22 +23,18 @@ def next_generation(directions):
 for x, y, d, g in dragons:
     # 드래곤 커브의 진행 방향을 저장한다
     # directions[i] = i세대의 진행 방향
-    directions =[[(dr[d],dc[d])]]
+    directions =[(dr[d],dc[d])]
     # 세대만큼 진행
     while g > 0:
-        last_directions = directions[-1]
-        next_directions = next_generation(last_directions)
-        directions.append(last_directions + next_directions)
+        directions += next_generation(directions)
         # print("directions:", directions)
         g -= 1
     # 격자에 표시
     # 맨 처음 시작점 표시
     arr[y][x] = True
-    # directions에 저장된 마지막 방향들이 드래곤 커브의 전체 진행방향
-    final_directions = directions[-1]
     # 격자에 표시한다
     # 드래곤 커브에 포함되는 꼭지점은 True로 표시
-    for row_dir, col_dir, in final_directions:
+    for row_dir, col_dir, in directions:
         arr[y+row_dir][x+col_dir] = True
         y += row_dir
         x += col_dir
