@@ -38,12 +38,6 @@ def debug_cube():
         print(row)
     print('=' * 30)
 
-def get_ith_col(arr3x3, i):
-    ret = []
-    for r in range(3):
-        ret.append(arr3x3[r][i])
-    return ret
-
 def self_rotate(target, param):
     new_arr = [[''] * 3 for _ in range(3)]
     # 시계방향
@@ -326,65 +320,27 @@ for tc in range(testcases):
     for cmd in cmds:
         side = cmd[0]
         param = cmd[1]
-        # if param == '+':
-        #     param = 1
-        # else:
-        #     param = -1
+        if param == '+':
+            param = 1
+        else:
+            param = -1
         if side == 'U':
-            if param == '+':
-                param = 1
-                up_rotate(param)
-            else:
-                # 반시계는 시계를 3번
-                # (디버깅 시계방향 반시계방향 각각 해주기 너무 귀찮아서 일단 시계방향 3번 돌리는걸로 반시계 대체)
-                up_rotate(1)
-                up_rotate(1)
-                up_rotate(1)
+            up_rotate(param)
 
         elif side == 'D':
-            if param == '+':
-                param = 1
-                down_rotate(param)
-            else:
-                down_rotate(1)
-                down_rotate(1)
-                down_rotate(1)
+            down_rotate(param)
 
         elif side == 'F':
-            if param == '+':
-                param = 1
-                front_rotate(param)
-            else:
-                front_rotate(1)
-                front_rotate(1)
-                front_rotate(1)
+            front_rotate(param)
 
         elif side == 'B':
-            if param == '+':
-                param = 1
-                back_rotate(param)
-            else:
-                back_rotate(1)
-                back_rotate(1)
-                back_rotate(1)
+            back_rotate(param)
 
         elif side == 'L':
-            if param == '+':
-                param = 1
-                left_rotate(param)
-            else:
-                left_rotate(1)
-                left_rotate(1)
-                left_rotate(1)
+            left_rotate(param)
 
         else:
-            if param == '+':
-                param = 1
-                right_rotate(param)
-            else:
-                right_rotate(1)
-                right_rotate(1)
-                right_rotate(1)
+            right_rotate(param)
 
         # print("let's debug for cmd:", cmd)
         # debug_cube()
